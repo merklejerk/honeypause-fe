@@ -1,0 +1,47 @@
+name: build-pages
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      build_branch:
+        type: string
+        default: build/public
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - name: validate branch
+        if: ${{ inputs.build_branch == 'main' }}
+        run: |
+          echo 'cannot target main branch' \
+          && exit 1
+      - name: prepare env
+        run: |
+          echo "PUBLIC_CHAIN_ID=${{ $CHAIN_ID }}" >> $GITHUB_ENV  \
+          && echo "CNAME=${{ $CNAME }}" >> $GITHUB_ENV 
+      - name: install deps
+        run: npm i --include=dev
+      - name: build
+        env:
+          BASE_PATH: ''
+        run: |
+          npm run build
+          touch build/.nojekyll
+      - name: commit
+        run: |
+          git checkout -f --orphan ${{ inputs.build_branch }} \
+          && git reset \
+          && echo "${{ vars.CNAME }}" >> 'build/CNAME' \
+          && git add -f build \
+          && git config user.name 'github-actions' \
+          && git config user.email 'actions@github.com' \
+          && git commit -m 'build' \
+          && git subtree split --prefix build -b tmp \
+          && git push -f -u origin tmp:${{ inputs.build_branch }}
+ 
