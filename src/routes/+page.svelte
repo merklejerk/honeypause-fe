@@ -231,7 +231,7 @@
                 </div>
                 {#if bty.claimTx}
                     <div class="claimed-stamp">
-                        <img src="/dancing_baby.gif" />
+                        <img src="dancing_baby.gif" />
                         <div class="text">CLAIMED</div>
                     </div>
                 {/if}
