@@ -107,8 +107,8 @@
     
                     > .claimed-stamp {
                         position: absolute;
-                        right: 0;
-                        bottom: 0;
+                        right: -3em;
+                        bottom: -1em;
                         pointer-events: none;
     
                         > img {
