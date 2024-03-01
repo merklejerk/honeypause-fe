@@ -20,7 +20,7 @@
         -webkit-font-smoothing : none !important;
     }
     main {
-
+        margin-bottom: 5em;
     }
     :global(hr) {
         border-style: inset;
@@ -28,14 +28,9 @@
         margin: 1em auto; 
         display: block;
         max-width: 95%;
-        // border-top-color: grey; 
-        // border-right-color: grey; 
-        // border-bottom-color: grey; 
-        // border-left-color: grey; 
     }
-
 </style>
 
-<main class="container">
+<main class="container-fluid">
     <slot />
 </main>
