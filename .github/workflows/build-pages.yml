@@ -35,7 +35,7 @@ jobs:
           touch build/.nojekyll
       - name: commit
         run: |
-          git checkout -f --orphan ${{ inputs.build_branch || "build/public" }} \
+          git checkout -f --orphan ${{ inputs.build_branch || 'build/public' }} \
           && git reset \
           && echo "${{ vars.CNAME }}" >> 'build/CNAME' \
           && git add -f build \
