@@ -23,8 +23,8 @@ jobs:
           && exit 1
       - name: prepare env
         run: |
-          echo "PUBLIC_CHAIN_ID=${{ $CHAIN_ID }}" >> $GITHUB_ENV  \
-          && echo "CNAME=${{ $CNAME }}" >> $GITHUB_ENV 
+          echo "PUBLIC_CHAIN_ID=$CHAIN_ID" >> $GITHUB_ENV  \
+          && echo "CNAME=$CNAME" >> $GITHUB_ENV 
       - name: install deps
         run: npm i --include=dev
       - name: build
