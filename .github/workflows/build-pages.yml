@@ -23,8 +23,8 @@ jobs:
           && exit 1
       - name: prepare env
         run: |
-          echo "PUBLIC_CHAIN_ID=$CHAIN_ID" >> $GITHUB_ENV  \
-          && echo "CNAME=$CNAME" >> $GITHUB_ENV 
+          echo "PUBLIC_CHAIN_ID=${{ vars.CHAIN_ID }}" >> $GITHUB_ENV  \
+          && echo "CNAME=${{ vars.CNAME }}" >> $GITHUB_ENV 
       - name: install deps
         run: npm i --include=dev
       - name: build
@@ -35,7 +35,7 @@ jobs:
           touch build/.nojekyll
       - name: commit
         run: |
-          git checkout -f --orphan ${{ inputs.build_branch }} \
+          git checkout -f --orphan ${{ inputs.build_branch || "build/public" }} \
           && git reset \
           && echo "${{ vars.CNAME }}" >> 'build/CNAME' \
           && git add -f build \
