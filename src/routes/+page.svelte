@@ -6,13 +6,13 @@
     import { getBounties } from '$lib/query';
     import { formatBountyAmount, toEtherscanAddressUrl, toEtherscanTxUrl, trimHex } from '$lib/utils';
 
+    const UNKNOWN_LOGO = 'unknown.png';
+
     let bounties = [] as Bounty[];
 
     onMount(async () => {
        bounties = [...bounties, ...(await getBounties())];
     });
-
-
 </script>
 
 <style lang="scss">
@@ -75,7 +75,7 @@
                 gap: 0 1.5ex; 
                 width: 100%;
 
-                @media (min-width: map.get(map.get($breakpoints, "lg"), "breakpoint")) {
+                @media (min-width: map.get(map.get($breakpoints, "sm"), "breakpoint")) {
                     flex-direction: row;
                 }
     
@@ -114,8 +114,7 @@
     
                     > .claimed-stamp {
                         position: absolute;
-                        right: -3em;
-                        bottom: -1em;
+                        right: -2em;
                         pointer-events: none;
     
                         > img {
@@ -144,7 +143,7 @@
     .hr {
         width: 100%;
         border-style: inset;
-        border: 2px solid;
+        border: 1px solid;
         border-color: var(--inset-border-down);
     }
 </style>
@@ -172,9 +171,7 @@
         {#each bounties as bty}
             <div class="bounty-card">
                 <div class="left">
-                    {#if bty.image}
-                        <div class="logo" style:background-image={`url(${bty.image})`} />
-                    {/if}
+                    <div class="logo" style:background-image={`url(${bty.image ? bty.image : UNKNOWN_LOGO})`} />
                 </div>
                 <div class="right">
                     <div class="name-container">
