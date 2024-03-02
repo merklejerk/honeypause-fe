@@ -181,7 +181,7 @@
             margin: 0 1ex;
             width: 116px;
             height: 42px;
-            background: url('browsers.jpg');
+            background: url('./browsers.jpg');
             background-size: 128px;
             border: 3px solid blue;
             

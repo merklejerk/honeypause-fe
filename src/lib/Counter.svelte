@@ -14,7 +14,7 @@
         gap: 1.25px;
 
         .digit {
-            background: url('led-digits.png');
+            background: url('./led-digits.png');
             background-size: 80px;
             height: 24px;
             width: 19px;
