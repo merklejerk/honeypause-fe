@@ -64,15 +64,15 @@
     }
 
     .content-header {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 1em;
-
         > .title {
             font-size: 1.33em;
             font-weight: bold;
+            width: fit-content;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 0 auto;
+            justify-content: center;
         }
     }
 
