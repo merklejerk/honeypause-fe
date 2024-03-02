@@ -171,7 +171,7 @@
         {#each bounties as bty}
             <div class="bounty-card">
                 <div class="left">
-                    <div class="logo" style:background-image={`url(${bty.image ? bty.image : UNKNOWN_LOGO})`} />
+                    <div class="logo" style:background-image={`url(${bty.image ? encodeURIComponent(bty.image) : UNKNOWN_LOGO})`} />
                 </div>
                 <div class="right">
                     <div class="name-container">
