@@ -59,6 +59,7 @@
 
         > .links {
             display: flex;
+            flex-wrap: wrap;
             gap: 1ex;
         }
     }
@@ -171,8 +172,16 @@
         gap: 1ex;
         justify-content: center;
         align-items: end;
+        @media (min-width: map.get(map.get($breakpoints, "sm"), "breakpoint")) {
+            justify-content: space-between;
+        }
 
-        > .views {
+        > * {
+            display: flex;
+            align-items: end;
+        }
+        
+        .views {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -268,10 +277,15 @@
 </div>
 <hr />
 <div class="footer">
-    <a href="https://opera.com"><div class="browser-button netscape" /></a>
-    <div class="views">
-        Page views
-        <Counter value={pageCounter} />
+    <div>
+        <a href="https://opera.com"><div class="browser-button netscape" /></a>
+        <div class="views">
+            Page views
+            <Counter value={pageCounter} />
+        </div>
+        <a href="https://brave.com"><div class="browser-button ie" /></a>
     </div>
-    <a href="https://brave.com"><div class="browser-button ie" /></a>
+    <div>
+        Contact the <a href="mailto:me@merklejerk.com" style="margin-left: 0.5ex;">@Webmaster</a>.
+    </div> 
 </div>
