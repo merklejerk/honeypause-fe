@@ -16,6 +16,9 @@
 </script>
 
 <style lang="scss">
+    @use "sass:map";
+    @import "@picocss/pico/scss/pico.scss";
+
     :root {
         --inset-border-down: grey white white grey;
         --border-colors-up: white grey black white;
@@ -68,9 +71,13 @@
                 border-color: var(--border-colors-up);
                 padding: 1em 1.5ex; 
                 display: flex; 
-                flex-direction: row;
+                flex-direction: column;
                 gap: 0 1.5ex; 
                 width: 100%;
+
+                @media (min-width: map.get(map.get($breakpoints, "lg"), "breakpoint")) {
+                    flex-direction: row;
+                }
     
                 > .left {
                     display: flex;
