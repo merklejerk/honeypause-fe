@@ -5,7 +5,16 @@ import type { Hex } from "viem";
 const ETHERSCAN_PREFIX = PUBLIC_CHAIN_ID !== '1' ? 'sepolia.' : '';
 
 export function formatBountyAmount(wei: bigint, decimals: number): string {
-    return new BigNumber(wei.toString()).div(new BigNumber(10).pow(decimals)).dp(2).toString();
+    let bn = new BigNumber(wei.toString()).div(new BigNumber(10).pow(decimals));
+    let suffix = '';
+    if (bn.gt(1e6)) {
+        bn = bn.div(1e6);
+        suffix = 'M';
+    } else if (bn.gt(1e3)) {
+        bn = bn.div(1e3);
+        suffix = 'K';
+    }
+    return `${bn.dp(2).toString()}${suffix}`;
 }
 
 export function toEtherscanAddressUrl(addr: Hex): string {

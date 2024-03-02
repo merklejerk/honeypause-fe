@@ -54,6 +54,7 @@
             font-family: 'Times New Roman', Times, serif;
             font-weight: bold;
             text-decoration: underline;
+            color: #fff3db;
             animation: blink 1.5s steps(1, end) infinite;
         }
 
