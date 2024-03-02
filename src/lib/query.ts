@@ -4,7 +4,7 @@ import { CANCELLED_EVENT, CLAIMED_EVENT, CREATED_EVENT, ERC20_ABI } from "./abi"
 import type { Bounty } from "./types";
 
 const CLIENT = createPublicClient({ transport: http(PUBLIC_ETHEREUM_RPC), batch: { multicall: true } });
-const VALID_CHARS_RE = /^[-a-z0-9 _!?]+$/i;
+const VALID_CHARS_RE = /^[-a-z0-9 _!?.#$]+$/i;
 
 export async function getBounties(): Promise<Bounty[]> {
     const events = [CREATED_EVENT, CLAIMED_EVENT, CANCELLED_EVENT];
