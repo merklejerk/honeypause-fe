@@ -152,7 +152,7 @@
     <img src="banner.png" class="banner" />
     <h1 class="title">Welcome to HoneyPause!</h1>
     <p class="intro">
-        HoneyPause lets whitehats safely and atomically prove a smart contract exploit <i>on-chain</i>, pause the affected protocol, then collect a bounty. Protocols can opt into the system by registering a bounty on the smart contract. The entire system is permissionless, non-custodial, and free! See the github for more info on how to participate.
+        HoneyPause lets whitehats safely and atomically <b>prove</b> a smart contract exploit <i>on-chain</i>, <b>pause</b> the affected protocol, then <b>collect</b> a bounty. Protocols can opt into the system by registering a bounty on the smart contract. The entire system is permissionless, non-custodial, and free! See the github for more info on how to participate.
     </p>
     <div class="links">
         <a href="https://github.com/merklejerk/honeypause">Github</a> |
