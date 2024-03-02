@@ -23,10 +23,10 @@
         margin-bottom: 5em;
     }
     :global(hr) {
-        border-style: inset;
-        border-width: 1px;
+        border-style: inset !important;
+        border: 1px solid !important;
+        border-color: grey white white grey !important;
         margin: 1em auto; 
-        display: block;
         max-width: 95%;
     }
 </style>
