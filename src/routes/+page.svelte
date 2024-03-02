@@ -179,17 +179,17 @@
 
         .browser-button {
             margin: 0 1ex;
-            width: 111px;
-            height: 39px;
+            width: 116px;
+            height: 42px;
             background: url('browser-buttons.jpg');
             background-size: 128px;
-            border: 2px solid blue;
+            border: 3px solid blue;
             
             &.netscape {
-                background-position: -11px -10px;
+                background-position: -10px -11px;
             }
             &.ie {
-                background-position: -11px -60px;
+                background-position: -10px -60px;
             }
         }
     }
@@ -218,7 +218,7 @@
 <hr /> 
 <div class="content-header">
     <div class="title">
-        <img src="bounties.gif" />
+        <img src="explosion.gif" /><img src="bounties.gif" /><img src="explosion.gif" />
     </div>
 </div>
 <div class="bounties">
@@ -267,10 +267,10 @@
 </div>
 <hr />
 <div class="footer">
-    <div class="browser-button netscape" />
+    <a href="https://opera.com"><div class="browser-button netscape" /></a>
     <div class="views">
         Page views
         <Counter value={pageCounter} />
     </div>
-    <div class="browser-button ie" />
+    <a href="https://brave.com"><div class="browser-button ie" /></a>
 </div>

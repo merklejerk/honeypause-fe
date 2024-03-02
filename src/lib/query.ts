@@ -58,7 +58,7 @@ export async function getBounties(): Promise<Bounty[]> {
         bounties[i].bountyTokenDecimals = d.decimals;
         bounties[i].bountyTokenName = d.symbol;
     }
-    return Object.values(bountiesById);
+    return bounties.sort((a, b) => b.id - a.id);
 }
 
 async function queryTokensData(tokens: Hex[]): Promise<Array<{ decimals: number; symbol: string }>> {
