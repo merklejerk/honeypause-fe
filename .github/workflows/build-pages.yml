@@ -24,7 +24,7 @@ jobs:
       - name: prepare env
         run: |
           echo "PUBLIC_CHAIN_ID=${{ vars.CHAIN_ID }}" >> $GITHUB_ENV  \
-          && echo "PUBLIC_ETHEREUM_RPC=${{ vars.ETHEREUM_RPC }}" >> $GITHUB_ENV  \
+          && echo "PUBLIC_ETHEREUM_RPC=${{ secrets.ETHEREUM_RPC }}" >> $GITHUB_ENV  \
           && echo "PUBLIC_HONEY_ADDRESS=${{ vars.HONEY_ADDRESS }}" >> $GITHUB_ENV  \
           && echo "PUBLIC_START_BLOCK=${{ vars.START_BLOCK }}" >> $GITHUB_ENV  \
           && echo "CNAME=${{ vars.CNAME }}" >> $GITHUB_ENV 
