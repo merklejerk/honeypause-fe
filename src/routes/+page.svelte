@@ -167,6 +167,7 @@
         margin: 1em 0 0 0;
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         gap: 1ex;
         justify-content: center;
         align-items: end;
