@@ -26,7 +26,7 @@
         border-style: inset !important;
         border: 1px solid !important;
         border-color: grey white white grey !important;
-        margin: 1em auto; 
+        margin: 1em auto !important; 
         max-width: 95%;
     }
 </style>
