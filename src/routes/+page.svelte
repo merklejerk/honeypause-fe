@@ -217,7 +217,7 @@
     <img src="honeypause.png" class="logo" />
     <h1 class="title">Welcome to HoneyPause.net!</h1>
     <p class="intro">
-        HoneyPause is a permissionless on-chain bug bounty tied to a circuit breaker. Whitehats can and atomically <b>prove</b> a smart contract exploit <i>on-chain</i>, <b>pause</b> the affected protocol, then <b>collect</b> a bounty for it. Protocols opt into the system by registering a bounty on the smart contract. The entire system is permissionless, non-custodial, and free! See the github for more info on how to participate.
+        HoneyPause is a permissionless on-chain exploit bounty tied to a circuit breaker. Whitehats can and atomically <b>prove</b> a smart contract exploit <i>on-chain</i>, <b>pause</b> the affected protocol, then <b>collect</b> a bounty for it. Protocols opt into the system by registering a bounty on the smart contract. The entire system is permissionless, non-custodial, and free! See the github for more info on how to participate.
     </p>
     <div class="links">
         <a href="https://github.com/merklejerk/honeypause">Github</a> |
