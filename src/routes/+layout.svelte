@@ -7,7 +7,7 @@
         $theme-color: 'grey',
     );
     :global(:root) {
-        --pico-background-color: #c0c0c0 !important;
+        --pico-background-color: #ababab !important;
         --pico-color: black !important;
         --pico-primary: blue !important; 
         :global(a) {
@@ -18,6 +18,7 @@
         font-family: 'Times New Roman', Times, serif;
         font-smooth: never !important;
         -webkit-font-smoothing : none !important;
+        // cursor: url(bee.png), pointer;
     }
     main {
         margin-bottom: 5em;
@@ -28,6 +29,9 @@
         border-color: grey white white grey !important;
         margin: 1em auto !important; 
         max-width: 95%;
+    }
+    :global() {
+
     }
 </style>
 

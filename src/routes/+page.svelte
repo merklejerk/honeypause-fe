@@ -5,9 +5,11 @@
     import { onMount } from 'svelte';
     import { getBounties } from '$lib/query';
     import { formatBountyAmount, toEtherscanAddressUrl, toEtherscanTxUrl, trimHex } from '$lib/utils';
+    import Counter from '$lib/Counter.svelte';
 
     const UNKNOWN_LOGO = 'unknown.png';
 
+    let pageCounter = Math.floor((Date.now() - new Date('2024-03-01').getTime()) / (1e3 * 30));
     let bounties = [] as Bounty[];
 
     onMount(async () => {
@@ -23,6 +25,19 @@
         --inset-border-down: grey white white grey;
         --border-colors-up: white grey black white;
     }
+
+    @keyframes blink { 
+        0%{ 
+            opacity: 0; 
+        } 
+        40%{ 
+            opacity: 0.7; 
+        } 
+        100%{ 
+            opacity: 0; 
+        }
+    }
+
     .top {
         margin: 1em auto 0.5em auto;
         display: flex;
@@ -30,10 +45,16 @@
         align-items: center;
         max-width: 800px; 
 
+        > .logo {
+            max-height: 200px;
+            margin-bottom: 1em;
+        }
+
         > .title {
             font-family: 'Times New Roman', Times, serif;
             font-weight: bold;
             text-decoration: underline;
+            animation: blink 1.5s steps(1, end) infinite;
         }
 
         > .links {
@@ -57,6 +78,7 @@
 
     .bounties {
         width: 100%;
+        margin: 1em 0;
         
         > div {
             margin: 0 auto;
@@ -140,6 +162,38 @@
         }
     }
 
+    .footer {
+        width: 100%;
+        margin: 1em 0 0 0;
+        display: flex;
+        flex-direction: row;
+        gap: 1ex;
+        justify-content: center;
+        align-items: end;
+
+        > .views {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .browser-button {
+            margin: 0 1ex;
+            width: 111px;
+            height: 39px;
+            background: url('browser-buttons.jpg');
+            background-size: 128px;
+            border: 2px solid blue;
+            
+            &.netscape {
+                background-position: -11px -10px;
+            }
+            &.ie {
+                background-position: -11px -60px;
+            }
+        }
+    }
+
     .hr {
         width: 100%;
         border-style: inset;
@@ -149,13 +203,14 @@
 </style>
 
 <div class="top">
-    <img src="banner.png" class="banner" />
-    <h1 class="title">Welcome to HoneyPause!</h1>
+    <img src="honeypause.png" class="logo" />
+    <h1 class="title">Welcome to HoneyPause.net!</h1>
     <p class="intro">
         HoneyPause lets whitehats safely and atomically <b>prove</b> a smart contract exploit <i>on-chain</i>, <b>pause</b> the affected protocol, then <b>collect</b> a bounty. Protocols can opt into the system by registering a bounty on the smart contract. The entire system is permissionless, non-custodial, and free! See the github for more info on how to participate.
     </p>
     <div class="links">
         <a href="https://github.com/merklejerk/honeypause">Github</a> |
+        <a href=".">Sitemap</a> |
         <a href={toEtherscanAddressUrl(PUBLIC_HONEY_ADDRESS)}>Contract</a> |
         <a href="https://twitter.com/_SEAL_Org">Guestbook</a>
     </div>
@@ -163,7 +218,7 @@
 <hr /> 
 <div class="content-header">
     <div class="title">
-        Available bounties
+        <img src="bounties.gif" />
     </div>
 </div>
 <div class="bounties">
@@ -202,11 +257,20 @@
                     {#if bty.claimTx}
                         <div class="claimed-stamp">
                             <img src="dancing_baby.gif" />
-                            <div class="text">CLAIMED</div>
+                            <div class="text">CLAIMED!</div>
                         </div>
                     {/if}
                 </div>
             </div>
         {/each}
     </div>
+</div>
+<hr />
+<div class="footer">
+    <div class="browser-button netscape" />
+    <div class="views">
+        Page views
+        <Counter value={pageCounter} />
+    </div>
+    <div class="browser-button ie" />
 </div>
