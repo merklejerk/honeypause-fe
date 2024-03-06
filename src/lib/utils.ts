@@ -2,6 +2,8 @@ import { PUBLIC_CHAIN_ID } from "$env/static/public";
 import BigNumber from "bignumber.js";
 import type { Hex } from "viem";
 
+const PHALCON_URL_BASE = 'phalcon.blocksec.com/explorer';
+const PHALCON_NETWORK_ID = PUBLIC_CHAIN_ID !== '1' ? 'sepolia' : 'eth';
 const ETHERSCAN_PREFIX = PUBLIC_CHAIN_ID !== '1' ? 'sepolia.' : '';
 
 export function formatBountyAmount(wei: bigint, decimals: number): string {
@@ -23,6 +25,10 @@ export function toEtherscanAddressUrl(addr: Hex): string {
 
 export function toEtherscanTxUrl(tx: Hex): string {
     return `https://${ETHERSCAN_PREFIX}etherscan.io/tx/${encodeURIComponent(tx)}`;
+}
+
+export function toPhalconTxUrl(tx: Hex): string {
+    return `https://${PHALCON_URL_BASE}/tx/${PHALCON_NETWORK_ID}/${encodeURIComponent(tx)}`;
 }
 
 export function trimHex(hex: Hex, maxDigits: number = 8): string {
