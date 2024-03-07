@@ -261,7 +261,7 @@
                         </div>
                         {#if bty.claimTx}
                         <div>
-                            Claimed @: <a href={toPhalconTxUrl(bty.claimTx)} target="_blank">{trimHex(bty.claimTx)}</a>
+                            Claimed @ <a href={toPhalconTxUrl(bty.claimTx)} target="_blank">{trimHex(bty.claimTx)}</a>
                         </div>
                         {/if}
                     </div>

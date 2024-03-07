@@ -1,10 +1,11 @@
 import { PUBLIC_ETHEREUM_RPC, PUBLIC_HONEY_ADDRESS, PUBLIC_START_BLOCK } from "$env/static/public";
 import { createPublicClient, decodeEventLog, http, type Hex, getContract, isAddressEqual } from "viem";
-import { CANCELLED_EVENT, CLAIMED_EVENT, CREATED_EVENT, ERC20_ABI } from "./abi";
+import { CANCELLED_EVENT, CLAIMED_EVENT, CREATED_EVENT, ERC20_ABI, HONEYPAUSE_ABI } from "./abi";
 import type { Bounty } from "./types";
 
 const CLIENT = createPublicClient({ transport: http(PUBLIC_ETHEREUM_RPC), batch: { multicall: true } });
 const VALID_CHARS_RE = /^[-a-z0-9 _!?.#$]+$/i;
+const BOUNTY_RECEIVER = '0x38d18acb67d25c8bb9942764b62f18e17054f66a';
 
 export async function getBounties(): Promise<Bounty[]> {
     const events = [CREATED_EVENT, CLAIMED_EVENT, CANCELLED_EVENT];
@@ -58,7 +59,8 @@ export async function getBounties(): Promise<Bounty[]> {
         bounties[i].bountyTokenDecimals = d.decimals;
         bounties[i].bountyTokenName = d.symbol;
     }
-    return bounties.sort((a, b) => b.id - a.id);
+    const payables = await Promise.all(bounties.map(b => queryBountyPayable(b.id)));
+    return bounties.filter((b, i) => b.claimTx || payables[i]).sort((a, b) => b.id - a.id);
 }
 
 async function queryTokensData(tokens: Hex[]): Promise<Array<{ decimals: number; symbol: string }>> {
@@ -78,6 +80,19 @@ async function queryTokensData(tokens: Hex[]): Promise<Array<{ decimals: number;
             .catch(() => 18))) as Promise<number[]>,
     ]);
     return symbols.map((symbol, i) => ({ symbol, decimals: decimals[i] }));
+}
+
+async function queryBountyPayable(bountyId: number): Promise<boolean> {
+    const honey = getContract({
+        abi: HONEYPAUSE_ABI,
+        client: CLIENT, 
+        address: PUBLIC_HONEY_ADDRESS as Hex, 
+    });
+    return await (honey.read.verifyBountyCanPay as any)({ args: [bountyId, BOUNTY_RECEIVER] })
+        .catch((err: any) => {
+            console.error(err);
+            return false;
+        });
 }
 
 function tryParseMetadata(s: string): { name: string; image?: string; } {
