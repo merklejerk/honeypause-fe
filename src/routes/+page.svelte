@@ -4,7 +4,7 @@
     import type { Bounty } from '$lib/types';
     import { onMount } from 'svelte';
     import { getBounties } from '$lib/query';
-    import { formatBountyAmount, toEtherscanAddressUrl, toEtherscanTxUrl, trimHex } from '$lib/utils';
+    import { formatBountyAmount, toEtherscanAddressUrl, toPhalconTxUrl, trimHex } from '$lib/utils';
     import Counter from '$lib/Counter.svelte';
 
     const UNKNOWN_LOGO = 'unknown.png';
@@ -252,16 +252,16 @@
                             Bounty: {
                                 formatBountyAmount(bty.bountyTokenAmount, bty.bountyTokenDecimals)
                             }
-                            <a href={toEtherscanAddressUrl(bty.bountyTokenAddress)}>
+                            <a href={toEtherscanAddressUrl(bty.bountyTokenAddress)} target="_blank">
                                 {bty.bountyTokenName ?? '???'}
                             </a>
                         </div>
                         <div>
-                            Verifier: <a href={toEtherscanAddressUrl(bty.verifierAddress)}>{trimHex(bty.verifierAddress)}</a>
+                            Verifier: <a href={toEtherscanAddressUrl(bty.verifierAddress)} target="_blank">{trimHex(bty.verifierAddress)}</a>
                         </div>
                         {#if bty.claimTx}
                         <div>
-                            Claimed @: <a href={toEtherscanTxUrl(bty.claimTx)}>{trimHex(bty.claimTx)}</a>
+                            Claimed @: <a href={toPhalconTxUrl(bty.claimTx)} target="_blank">{trimHex(bty.claimTx)}</a>
                         </div>
                         {/if}
                     </div>
