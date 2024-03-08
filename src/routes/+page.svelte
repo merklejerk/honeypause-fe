@@ -220,10 +220,10 @@
         HoneyPause is a permissionless on-chain exploit bounty tied to a circuit breaker. Whitehats can and atomically <b>prove</b> a smart contract exploit <i>on-chain</i>, <b>pause</b> the affected protocol, then <b>collect</b> a bounty for it. Protocols opt into the system by registering a bounty on the smart contract. The entire system is permissionless, non-custodial, and free! See the github for more info on how to participate.
     </p>
     <div class="links">
-        <a href="https://github.com/merklejerk/honeypause">Github</a> |
-        <a href=".">Sitemap</a> |
-        <a href={toEtherscanAddressUrl(PUBLIC_HONEY_ADDRESS)}>Contract</a> |
-        <a href="https://twitter.com/_SEAL_Org">Guestbook</a>
+        <a target="_blank" href="https://github.com/merklejerk/honeypause">Github</a> |
+        <a target="_blank" href=".">Sitemap</a> |
+        <a target="_blank" href={toEtherscanAddressUrl(PUBLIC_HONEY_ADDRESS)}>Contract</a> |
+        <a target="_blank" href="https://twitter.com/_SEAL_Org">Guestbook</a>
     </div>
 </div>
 <hr /> 
@@ -287,6 +287,6 @@
         <a href="https://brave.com"><div class="browser-button ie" /></a>
     </div>
     <div>
-        Contact the <a href="mailto:me@merklejerk.com" style="margin-left: 0.5ex;">@Webmaster</a>.
+        Contact the <a href="https://github.com/merklejerk/honeypause/issues" target="_blank" style="margin-left: 0.5ex;">@Webmaster</a>.
     </div> 
 </div>
